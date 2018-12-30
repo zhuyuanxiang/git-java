@@ -9,6 +9,9 @@ import org.junit.Test;
 
 public class SystemPermissionTest {
   private SystemPermission permission;
+  private SystemAdmin admin;
+  private SystemUser user;
+  private SystemProfile profile;
 
   @Before
   public void setUp() throws Exception {
@@ -17,11 +20,11 @@ public class SystemPermissionTest {
 
   @Test
   public final void testGrantedBy() {
-    permission.grantedBy(admin);
+    permission.granted(admin);
     assertEquals("requested", permission.REQUESTED, permission.getState());
     assertEquals("not granted", false, permission.isGranted());
-    permission.claimedBy(admin);
-    permission.grantedBy(admin);
+    permission.claimed(admin);
+    permission.granted(admin);
     assertEquals("granted", permission.GRANTED, permission.getState());
     assertEquals("granted", true, permission.isGranted());
   }
