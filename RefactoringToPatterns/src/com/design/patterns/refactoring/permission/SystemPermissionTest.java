@@ -8,15 +8,27 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 public class SystemPermissionTest {
+  private SystemPermission permission;
 
   @Before
   public void setUp() throws Exception {
+    permission = new SystemPermission(user, profile);
+  }
+
+  @Test
+  public final void testGrantedBy() {
+    permission.grantedBy(admin);
+    assertEquals("requested", permission.REQUESTED, permission.getState());
+    assertEquals("not granted", false, permission.isGranted());
+    permission.claimedBy(admin);
+    permission.grantedBy(admin);
+    assertEquals("granted", permission.GRANTED, permission.getState());
+    assertEquals("granted", true, permission.isGranted());
   }
 
   @Test
   @Ignore
   public final void testClaimedByPermissionState() {
-    final SystemPermission permission = new SystemPermission();
     assertThat(permission.getState(), is(PermissionState.REQUESTED));
     permission.claimed();
     assertEquals(PermissionState.CLAIMED, permission.getState());
