@@ -14,44 +14,23 @@ public class SystemPermissionTest {
   }
 
   @Test
-  @Ignore
-  public final void testClaimedByPermissionState() {
+  public final void testClaimedByPermissionEnum() {
     final SystemPermission permission = new SystemPermission();
-    assertThat(permission.getState(), is(PermissionState.REQUESTED));
+    assertThat(permission.getState(), is(PermissionEnum.REQUESTED));
     permission.claimed();
-    assertEquals(PermissionState.CLAIMED, permission.getState());
+    assertEquals(PermissionEnum.CLAIMED, permission.getState());
     permission.denied();
-    assertEquals(PermissionState.DENIED, permission.getState());
+    assertEquals(PermissionEnum.DENIED, permission.getState());
   }
 
   @Test
-  @Ignore
-  public final void testGrantedByPermissionState() {
+  public final void testGrantedByPermissionEnum() {
     final SystemPermission permission = new SystemPermission();
-    assertThat(permission.getState(), is(PermissionState.REQUESTED));
+    assertThat(permission.getState(), is(PermissionEnum.REQUESTED));
     permission.claimed();
-    assertEquals(PermissionState.CLAIMED, permission.getState());
+    assertEquals(PermissionEnum.CLAIMED, permission.getState());
     permission.granted();
-    assertEquals(PermissionState.GRANTED, permission.getState());
+    assertEquals(PermissionEnum.GRANTED, permission.getState());
   }
 
-  @Test
-  public final void testClaimedBySystemPermission() {
-    final SystemPermission permission = new SystemPermission();
-    assertThat(permission.getState(), is(SystemPermission.REQUESTED));
-    permission.claimed();
-    assertEquals(SystemPermission.CLAIMED, permission.getState());
-    permission.denied();
-    assertEquals(SystemPermission.DENIED, permission.getState());
-  }
-
-  @Test
-  public final void testGrantedBySystemPermission() {
-    final SystemPermission permission = new SystemPermission();
-    assertThat(permission.getState(), is(SystemPermission.REQUESTED));
-    permission.claimed();
-    assertEquals(SystemPermission.CLAIMED, permission.getState());
-    permission.granted();
-    assertEquals(SystemPermission.GRANTED, permission.getState());
-  }
 }

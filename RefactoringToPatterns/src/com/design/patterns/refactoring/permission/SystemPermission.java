@@ -1,49 +1,42 @@
 package com.design.patterns.refactoring.permission;
 
 public class SystemPermission {
-  private String state;
   private boolean granted;
 
-  public final static String REQUESTED = "REQUESTED";
-  public final static String CLAIMED = "CLAIMED";
-  public final static String DENIED = "DENIED";
-  public final static String GRANTED = "GRANTED";
+  private PermissionEnum permission;
 
   public SystemPermission() {
-    state = SystemPermission.REQUESTED;
+    setState(PermissionEnum.REQUESTED);
     granted = false;
   }
 
   public void claimed() {
-    if (state.equals(SystemPermission.REQUESTED)) {
-      state = SystemPermission.CLAIMED;
+    if (getState() == PermissionEnum.REQUESTED) {
+      setState(PermissionEnum.CLAIMED);
     }
   }
 
   public void denied() {
-    if (state.equals(SystemPermission.CLAIMED)) {
-      state = SystemPermission.DENIED;
+    if (getState() == PermissionEnum.CLAIMED) {
+      setState(PermissionEnum.DENIED);
     }
   }
 
   public void granted() {
-    if (!state.equals(SystemPermission.CLAIMED)) {
-      return;
+    if (getState() == (PermissionEnum.CLAIMED)) {
+      setState(PermissionEnum.GRANTED);
+      granted = true;
     }
-    state = SystemPermission.GRANTED;
-    granted = true;
   }
 
-  /**
-   * @return the state
-   */
-  String getState() {
-    return state;
+  private void setState(PermissionEnum permission) {
+    this.permission = permission;
   }
 
-  /**
-   * @return the granted
-   */
+  PermissionEnum getState() {
+    return permission;
+  }
+
   boolean isGranted() {
     return granted;
   }
