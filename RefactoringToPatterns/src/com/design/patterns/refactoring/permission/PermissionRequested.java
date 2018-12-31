@@ -1,8 +1,9 @@
 package com.design.patterns.refactoring.permission;
 
 public class PermissionRequested extends PermissionState {
+  private static PermissionState state = new PermissionRequested();
 
-  public PermissionRequested() {
+  private PermissionRequested() {
     super("REQUESTED");
   }
 
@@ -12,15 +13,7 @@ public class PermissionRequested extends PermissionState {
     permission.setState(PermissionState.CLAIMED);
   }
 
-  @Override
-  void deniedBy(SystemAdmin admin, SystemPermission permission) {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  void grantedBy(SystemAdmin admin, SystemPermission permission) {
-    // TODO Auto-generated method stub
-
+  public static PermissionState state() {
+    return state;
   }
 }

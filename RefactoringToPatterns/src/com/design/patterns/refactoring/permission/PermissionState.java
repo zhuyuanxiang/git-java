@@ -12,16 +12,19 @@ public abstract class PermissionState {
     return name;
   }
 
-  public final static PermissionState REQUESTED = new PermissionRequested();
+  public final static PermissionState REQUESTED = PermissionRequested.state();
   public final static PermissionState CLAIMED = new PermissionClaimed();
   public final static PermissionState DENIED = new PermissionDenied();
   public final static PermissionState GRANTED = new PermissionGranted();
   public final static PermissionState UNIX_REQUESTED = new UnixPermissionRequested();
   public final static PermissionState UNIX_CLAIMED = new UnixPermissionClaimed();
 
-  abstract void claimedBy(SystemAdmin admin, SystemPermission permission);
+  void claimedBy(SystemAdmin admin, SystemPermission permission) {
+  }
 
-  abstract void deniedBy(SystemAdmin admin, SystemPermission permission);
+  void deniedBy(SystemAdmin admin, SystemPermission permission) {
+  }
 
-  abstract void grantedBy(SystemAdmin admin, SystemPermission permission);
+  void grantedBy(SystemAdmin admin, SystemPermission permission) {
+  }
 }

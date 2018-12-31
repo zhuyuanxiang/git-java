@@ -33,40 +33,40 @@ public class SystemPermissionTest {
   @Ignore
   public final void testClaimedByPermissionState() {
     assertThat(permission.getState(), is(PermissionState.REQUESTED));
-    permission.claimed();
+    permission.claimed(admin);
     assertEquals(PermissionState.CLAIMED, permission.getState());
-    permission.denied();
+    permission.denied(admin);
     assertEquals(PermissionState.DENIED, permission.getState());
   }
 
   @Test
   @Ignore
   public final void testGrantedByPermissionState() {
-    final SystemPermission permission = new SystemPermission();
+    final SystemPermission permission = new SystemPermission(user, profile);
     assertThat(permission.getState(), is(PermissionState.REQUESTED));
-    permission.claimed();
+    permission.claimed(admin);
     assertEquals(PermissionState.CLAIMED, permission.getState());
-    permission.granted();
+    permission.granted(admin);
     assertEquals(PermissionState.GRANTED, permission.getState());
   }
 
   @Test
   public final void testClaimedBySystemPermission() {
-    final SystemPermission permission = new SystemPermission();
+    final SystemPermission permission = new SystemPermission(user, profile);
     assertThat(permission.getState(), is(SystemPermission.REQUESTED));
-    permission.claimed();
+    permission.claimed(admin);
     assertEquals(SystemPermission.CLAIMED, permission.getState());
-    permission.denied();
+    permission.denied(admin);
     assertEquals(SystemPermission.DENIED, permission.getState());
   }
 
   @Test
   public final void testGrantedBySystemPermission() {
-    final SystemPermission permission = new SystemPermission();
+    final SystemPermission permission = new SystemPermission(user, profile);
     assertThat(permission.getState(), is(SystemPermission.REQUESTED));
-    permission.claimed();
+    permission.claimed(admin);
     assertEquals(SystemPermission.CLAIMED, permission.getState());
-    permission.granted();
+    permission.granted(admin);
     assertEquals(SystemPermission.GRANTED, permission.getState());
   }
 }
