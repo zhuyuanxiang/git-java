@@ -1,18 +1,20 @@
 package com.design.patterns.refactoring.HTML;
 
 import static org.junit.Assert.*;
+import org.htmlparser.util.NodeIterator;
+import org.htmlparser.util.Translate;
+import org.htmlparser.Node;
+import org.htmlparser.tags.Tag;
 import org.junit.Test;
-import org.w3c.dom.traversal.NodeIterator;
-import com.design.patterns.refactoring.HTML.parser.Node;
 
 public class StringNodeTest {
+  private String ENCODED_WORKSHOP_TITLE = "The Testing &amp; Refactoring Workshop";
+  private String DECODED_WORKSHOP_TITLE = "The Testing & Refactoring Workshop";
+  private Parser parser = Parser.createParser(ENCODED_WORKSHOP_TITLE);
 
   @Test
-  public final void testDecodingAmpersand() {
-    String ENCODED_WORKSHOP_TITLE = "The Testing &amp; Refactoring Workshop";
-    String DECODED_WORKSHOP_TITLE = "The Testing & Refactoring Workshop";
+  public final void testDecodingAmpersand() throws Exception {
     StringBuffer decodedContent = new StringBuffer();
-    Parser parser = Parser.createParser(ENCODED_WORKSHOP_TITLE);
     parser.setNodeDecoding(true);
     NodeIterator nodes = parser.elements();
     while (nodes.hasMoreNodes()) {
@@ -37,6 +39,11 @@ public class StringNodeTest {
       }
     }
     return decodedContent.toString();
+  }
+
+  private void createParser(String stringToDecode) {
+    // TODO Auto-generated method stub
+
   }
 
 }

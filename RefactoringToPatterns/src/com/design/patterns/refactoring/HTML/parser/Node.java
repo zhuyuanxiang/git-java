@@ -1,10 +1,15 @@
 package com.design.patterns.refactoring.HTML.parser;
 
-public class Node extends Tag {
+import java.io.Serializable;
+
+public abstract class Node implements Serializable {
 
   public Node(int tagBegin, int tagEnd, String tagContents, String tagLine) {
-    super(tagBegin, tagEnd, tagContents, tagLine);
-    // TODO Auto-generated constructor stub
+  }
+
+  public String toPlainTextString() {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }

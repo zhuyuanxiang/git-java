@@ -2,11 +2,12 @@ package com.design.patterns.refactoring.HTML.parser;
 
 import java.util.Hashtable;
 
-public abstract class Tag {
+public class Tag extends Node {
   public static final String TAGNAME = null;
 
   public Tag(int tagBegin, int tagEnd, String tagContents, String tagLine) {
-    // TODO super(tagBegin, tagEnd, tagContents, tagLine);
+    // TODO
+    super(tagBegin, tagEnd, tagContents, tagLine);
   }
 
   public Hashtable<String, String> getParsed() {
@@ -24,7 +25,11 @@ public abstract class Tag {
     return 0;
   }
 
-  public abstract String toPlainTextString();
+  public String toPlainTextString() {
+    return null;
+  }
 
-  public abstract String toHTML();
+  public String toHTML() {
+    return null;
+  }
 }
