@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ProductRepositoryTest {
-  private ProductRepository repository = new ProductRepository();;
+  private ProductRepository repository = new ProductRepository();
   private Product fireTruck =
       new Product("f1234", "Fire Truck", Color.red, 8.95f, ProductSize.MEDIUM);
   private Product barbieClassic =
