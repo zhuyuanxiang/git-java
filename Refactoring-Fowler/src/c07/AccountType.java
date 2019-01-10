@@ -2,6 +2,16 @@ package c07;
 
 public class AccountType {
 
+  double _interestRate;
+
+  double get_interestRate() {
+    return _interestRate;
+  }
+
+  void set_interestRate(double _interestRate) {
+    this._interestRate = _interestRate;
+  }
+
   public boolean isPremium() {
     // TODO Auto-generated method stub
     return false;
@@ -17,6 +27,10 @@ public class AccountType {
     } else {
       return account._daysOverdrawn * 1.75;
     }
+  }
+
+  double interestForAmount_days(double amount, int days) {
+    return (get_interestRate() * amount * days) / 365;
   }
 
 }
