@@ -1,23 +1,18 @@
 package c08;
 
 public class Order {
-  public Order(String customer) {
-    _customer = new Customer(customer);
+  private Customer _customer;
+
+  public Order(String name) {
+    _customer = Customer.getNamed(name);
   }
 
-  public String getCustomer() {
+  public String getCustomerName() {
     return _customer.getName();
   }
 
-  public void setCustomer(String arg) {
-    _customer = new Customer(arg);
-  }
-
-  private Customer _customer;
-
-  public Order getCustomerName() {
-    // TODO Auto-generated method stub
-    return null;
+  public void setCustomer(String name) {
+    _customer = Customer.getNamed(name);
   }
 
 }

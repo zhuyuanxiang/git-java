@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class Client {
-  private static int numberOfOrdersFor(Collection orders, String customer) {
+  static int numberOfOrdersFor(Collection orders, String customer) {
     int result = 0;
     Iterator iter = orders.iterator();
     while (iter.hasNext()) {
