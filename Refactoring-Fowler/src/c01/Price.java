@@ -1,5 +1,17 @@
 package c01;
 
+abstract class Price {
+  // determine amounts for each line
+  protected abstract double getCharge(int daysRented);
+
+  protected int getFrequentRenterPoints(int daysRented) {
+    return 1;
+  }
+
+  protected abstract int getPriceCode();
+}
+
+
 class ChildrensPrice extends Price {
 
   @Override
@@ -36,18 +48,6 @@ class NewReleasePrice extends Price {
     return Movie.NEW_RELEASE;
   }
 
-}
-
-
-abstract class Price {
-  // determine amounts for each line
-  protected abstract double getCharge(int daysRented);
-
-  protected int getFrequentRenterPoints(int daysRented) {
-    return 1;
-  }
-
-  protected abstract int getPriceCode();
 }
 
 
