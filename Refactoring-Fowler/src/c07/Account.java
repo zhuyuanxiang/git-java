@@ -20,10 +20,19 @@ public class Account {
     return _type.overdraftCharge(this);
   }
 
-  private double _interestRate;
-
+  /**
+   * @deprecated Use {@link c07.AccountType#interestForAmount_days(c07.Account,double,int)} instead
+   */
+  @Deprecated
   double interestForAmount_days(double amount, int days) {
-    return (_interestRate * amount * days) / 365;
+    return _type.interestForAmount_days(amount, days);
   }
 
+  double get_interestRate() {
+    return _type.get_interestRate();
+  }
+
+  void set_interestRate(double _interestRate) {
+    _type.set_interestRate(_interestRate);
+  }
 }
