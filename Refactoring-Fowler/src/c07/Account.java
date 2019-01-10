@@ -20,4 +20,10 @@ public class Account {
     return _type.overdraftCharge(this);
   }
 
+  private double _interestRate;
+
+  double interestForAmount_days(double amount, int days) {
+    return (_interestRate * amount * days) / 365;
+  }
+
 }
