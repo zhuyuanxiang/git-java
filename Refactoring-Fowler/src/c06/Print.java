@@ -9,7 +9,7 @@ public class Print {
   void printOwing(double previousAmout) {
     double outstanding = previousAmout * 1.2;
     printBanner();
-    outstanding = getOutstanding(previousAmout);
+    outstanding = getOutstanding(outstanding);
     printDetails(outstanding);
   }
 
