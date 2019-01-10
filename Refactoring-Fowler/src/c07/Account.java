@@ -1,7 +1,7 @@
 package c07;
 
 public class Account {
-  private int _daysOverdrawn;
+  int _daysOverdrawn;
   private AccountType _type;
 
   double bankCharge() {
@@ -12,16 +12,12 @@ public class Account {
     return result;
   }
 
+  /**
+   * @deprecated Use {@link c07.AccountType#overdraftCharge(c07.Account)} instead
+   */
+  @Deprecated
   double overdraftCharge() {
-    if (_type.isPremium()) {
-      double result = 10;
-      if (_daysOverdrawn > 7) {
-        result += (_daysOverdrawn - 7) * 0.85;
-      }
-      return result;
-    } else {
-      return _daysOverdrawn * 1.75;
-    }
+    return _type.overdraftCharge(this);
   }
 
 }
