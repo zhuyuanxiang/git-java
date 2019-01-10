@@ -1,16 +1,17 @@
 package c06;
 
 public class RemoveAssignments_toParameters {
-  int discount(int inputVal, int quantity, int yearToDate) {
+  int discount(final int inputVal, final int quantity, final int yearToDate) {
+    int result = inputVal;
     if (inputVal > 50) {
-      inputVal -= 2;
+      result -= 2;
     }
     if (quantity > 100) {
-      inputVal -= 1;
+      result -= 1;
     }
     if (yearToDate > 10000) {
-      inputVal -= 4;
+      result -= 4;
     }
-    return inputVal;
+    return result;
   }
 }
