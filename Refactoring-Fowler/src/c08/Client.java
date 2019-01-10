@@ -16,4 +16,14 @@ public class Client {
     return result;
   }
 
+  static void readArray() {
+    Performance row = new Performance();
+    row.setName("Liverpool");
+    row.setWins("15");
+
+    String name = row.getName();
+    int wins = row.getWins();
+
+  }
+
 }
