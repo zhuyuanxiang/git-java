@@ -6,7 +6,7 @@ public abstract class Employee {
   static final int SALESMAN = 1;
   static final int MANAGER = 2;
 
-  protected Employee(int type) {
+  Employee(int type) {
     _type = type;
   }
 
