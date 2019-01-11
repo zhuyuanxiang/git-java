@@ -2,6 +2,7 @@ package c08;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import junit.framework.Assert;
 
 public class PersonTest {
 
@@ -24,6 +25,15 @@ public class PersonTest {
     kent.removeCourse(refact);
     // kent.getCourses().remove(refact); // 集合已经成为不可修改的，运行到这里会报错。
     assert 3 == kent.getCourses().size();
+  }
+
+  @Test
+  public final void testTypeCode() {
+    Person thePerosn = new Person(BloodGroup.A);
+    Assert.assertEquals(thePerosn.getBloodGroup(), BloodGroup.A);
+    thePerosn.setBloodGroup(BloodGroup.AB);
+    Assert.assertEquals(thePerosn.getBloodGroup(), BloodGroup.AB);
+
   }
 
 }

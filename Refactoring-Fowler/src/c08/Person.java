@@ -7,26 +7,39 @@ import java.util.Set;
 
 public class Person {
 
-  public static final int A = 1;
-  public static final int AB = 3;
-  public static final int B = 2;
-  public static final int O = 0;
+  // public static final int A = BloodGroup.A.getCode();
+  // public static final int AB = BloodGroup.AB.getCode();
+  // public static final int B = BloodGroup.B.getCode();
+  // public static final int O = BloodGroup.O.getCode();
 
-  private int _bloodGroup;
+  private BloodGroup _bloodGroup;
 
   private Set _courses = new HashSet();
 
-  public Person(int bloodGroup) {
+  public Person() {
+    // setBloodGroup(O);
+    this(BloodGroup.O);
+  }
+
+  public Person(BloodGroup bloodGroup) {
     _bloodGroup = bloodGroup;
   }
+
+  // public Person(int bloodGroup) {
+  // setBloodGroup(BloodGroup.code(bloodGroup));
+  // }
 
   public void addCourse(Course arg) {
     _courses.add(arg);
   }
 
-  public int getBloodGroup() {
+  public BloodGroup getBloodGroup() {
     return _bloodGroup;
   }
+
+  // public int getBloodGroupCode() {
+  // return _bloodGroup.getCode();
+  // }
 
   public Set getCourses() {
     return Collections.unmodifiableSet(_courses);
@@ -45,8 +58,12 @@ public class Person {
     _courses.remove(arg);
   }
 
-  public void setBloodGroup(int arg) {
-    _bloodGroup = arg;
+  // public void setBloodGroup(int arg) {
+  // _bloodGroup = BloodGroup.code(arg);
+  // }
+
+  void setBloodGroup(BloodGroup bloodGroup) {
+    _bloodGroup = bloodGroup;
   }
 
   private void setCourses(Set arg) {
