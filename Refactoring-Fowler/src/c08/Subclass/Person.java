@@ -1,33 +1,27 @@
 package c08.Subclass;
 
-public abstract class Person {
-  abstract boolean isMale();
-
-  abstract char getCode();
-}
-
-
-class Male extends Person {
-  @Override
-  boolean isMale() {
-    return true;
+public class Person {
+  static Person createFemale() {
+    return new Person(false, 'F');
   }
 
-  @Override
+  static Person createMale() {
+    return new Person(true, 'M');
+  }
+
+  private final char _code;
+  private final boolean _isMale;
+
+  protected Person(boolean isMale, char code) {
+    _isMale = isMale;
+    _code = code;
+  }
+
   char getCode() {
-    return 'M';
+    return _code;
   }
-}
 
-
-class Female extends Person {
-  @Override
   boolean isMale() {
-    return true;
-  }
-
-  @Override
-  char getCode() {
-    return 'F';
+    return _isMale;
   }
 }
