@@ -1,10 +1,13 @@
 package c08;
 
 import java.util.Dictionary;
+import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Set;
 
 public class Customer {
   private final String _name;
+  private Set _orders = new HashSet();
   private static Dictionary _instance = new Hashtable<>();
 
   static void loadCustomers() {
@@ -27,5 +30,13 @@ public class Customer {
 
   public String getName() {
     return _name;
+  }
+
+  Set friendOrders() {
+    return _orders;
+  }
+
+  void addOrder(Order arg) {
+    arg.setCustomer(this);
   }
 }
