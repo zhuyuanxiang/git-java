@@ -36,3 +36,4 @@ public class Print {
     System.out.println("name:" + _name);
     System.out.println("amount" + amount);
   }
+}

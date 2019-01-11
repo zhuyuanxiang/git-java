@@ -3,6 +3,7 @@ package c08;
 import java.util.Dictionary;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Set;
 
 public class Customer {
@@ -38,5 +39,25 @@ public class Customer {
 
   void addOrder(Order arg) {
     arg.setCustomer(this);
+  }
+
+  public int getDiscount() {
+    // TODO Auto-generated method stub
+    return 0;
+  }
+
+  double getPriceFor(Order order) {
+    assert _orders.contains(order);
+    return order.getDiscountedPrice(this);
+  }
+
+  public static Set getInstances() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  public boolean containsOrder(Order order) {
+    // TODO Auto-generated method stub
+    return false;
   }
 }

@@ -1,9 +1,9 @@
 package c08;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Iterator;
 
 public class Order {
+  private static final int BASE_DISCOUNT = 1;
   private Customer _customer;
 
   public Order(String name) {
@@ -28,4 +28,23 @@ public class Order {
     }
   }
 
+  double getDiscountedPrice(Customer customer) {
+    return getGrossPrice() * (BASE_DISCOUNT - customer.getDiscount());
+  }
+
+  private int getGrossPrice() {
+    // TODO Auto-generated method stub
+    return 0;
+  }
+
+  Customer getCustomer() {
+    Iterator iter = Customer.getInstances().iterator();
+    while (iter.hasNext()) {
+      Customer each = (Customer) iter.next();
+      if (each.containsOrder(this)) {
+        return each;
+      }
+    }
+    return null;
+  }
 }
