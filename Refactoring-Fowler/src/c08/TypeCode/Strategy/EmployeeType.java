@@ -1,9 +1,9 @@
 package c08.TypeCode.Strategy;
 
 public abstract class EmployeeType {
-  static final int ENGINEER = 0;
-  static final int SALESMAN = 1;
-  static final int MANAGER = 2;
+  protected static final int ENGINEER = 0;
+  protected static final int SALESMAN = 1;
+  protected static final int MANAGER = 2;
 
   abstract int getTypeCode();
 
@@ -19,6 +19,8 @@ public abstract class EmployeeType {
         throw new IllegalArgumentException("Incorrect Employee Code");
     }
   }
+
+  abstract int payAmount(Employee employee);
 }
 
 
@@ -27,6 +29,11 @@ class Engineer extends EmployeeType {
   @Override
   int getTypeCode() {
     return ENGINEER;
+  }
+
+  @Override
+  int payAmount(Employee employee) {
+    return employee._monthlySalary;
   }
 
 }
@@ -39,6 +46,11 @@ class Salesman extends EmployeeType {
     return SALESMAN;
   }
 
+  @Override
+  int payAmount(Employee employee) {
+    return employee._monthlySalary + employee._commission;
+  }
+
 }
 
 
@@ -47,6 +59,11 @@ class Manager extends EmployeeType {
   @Override
   int getTypeCode() {
     return MANAGER;
+  }
+
+  @Override
+  int payAmount(Employee employee) {
+    return employee._monthlySalary + employee._bonus;
   }
 
 }
