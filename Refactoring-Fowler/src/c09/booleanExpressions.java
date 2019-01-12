@@ -2,36 +2,35 @@ package c09;
 
 public class booleanExpressions {
   void checkSecurity1(String[] people) {
-    boolean found = false;
     for (String element : people) {
-      if (!found) {
-        if (element.equals("Don")) {
-          sendAlert();
-          found = true;
-        }
-        if (element.equals("John")) {
-          sendAlert();
-          found = true;
-        }
+      if (element.equals("Don")) {
+        sendAlert();
+        break;
+      }
+      if (element.equals("John")) {
+        sendAlert();
+        break;
       }
     }
   }
 
   void checkSecurity2(String[] people) {
-    String found = "";
+    String found = foundMiscreant(people);
+    someLaterCode(found);
+  }
+
+  private String foundMiscreant(String[] people) {
     for (String element : people) {
-      if (found.equals("")) {
-        if (element.equals("Don")) {
-          sendAlert();
-          found = "Don";
-        }
-        if (element.equals("John")) {
-          sendAlert();
-          found = "John";
-        }
+      if (element.equals("Don")) {
+        sendAlert();
+        return "Don";
+      }
+      if (element.equals("John")) {
+        sendAlert();
+        return "John";
       }
     }
-    someLaterCode(found);
+    return "";
   }
 
   private void someLaterCode(String found) {
