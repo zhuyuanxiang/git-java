@@ -5,11 +5,18 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
+import c09.BillingPlan;
+import c09.PaymentHistory;
 
 public class Customer {
-  private final String _name;
-  private Set _orders = new HashSet();
   private static Dictionary _instance = new Hashtable<>();
+  public static Set getInstances() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  public static Customer getNamed(String name) {
+    return (Customer) _instance.get(name);
+  }
 
   static void loadCustomers() {
     new Customer("Lemon Car Hire").store();
@@ -17,28 +24,17 @@ public class Customer {
     new Customer("Bilston Gasworks").store();
   }
 
-  private void store() {
-    _instance.put(getName(), this);
-  }
+  private final String _name;
 
-  public static Customer getNamed(String name) {
-    return (Customer) _instance.get(name);
-  }
+  private Set _orders = new HashSet();
 
   private Customer(String name) {
     _name = name;
   }
 
-  public String getName() {
-    return _name;
-  }
-
-  Set friendOrders() {
-    return _orders;
-  }
-
-  void addOrder(Order arg) {
-    arg.setCustomer(this);
+  public boolean containsOrder(Order order) {
+    // TODO Auto-generated method stub
+    return false;
   }
 
   public int getDiscount() {
@@ -46,18 +42,33 @@ public class Customer {
     return 0;
   }
 
-  double getPriceFor(Order order) {
-    assert _orders.contains(order);
-    return order.getDiscountedPrice(this);
+  public PaymentHistory getHistory() {
+    return null;
   }
 
-  public static Set getInstances() {
+  public String getName() {
+    return _name;
+  }
+
+  public BillingPlan getPlan() {
     // TODO Auto-generated method stub
     return null;
   }
 
-  public boolean containsOrder(Order order) {
-    // TODO Auto-generated method stub
-    return false;
+  private void store() {
+    _instance.put(getName(), this);
+  }
+
+  void addOrder(Order arg) {
+    arg.setCustomer(this);
+  }
+
+  Set friendOrders() {
+    return _orders;
+  }
+
+  double getPriceFor(Order order) {
+    assert _orders.contains(order);
+    return order.getDiscountedPrice(this);
   }
 }
