@@ -4,10 +4,10 @@
 package com.design.patterns.refactoring.strategy;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author zYx.Tom
- *
  */
 public class Loan {
   private double commitment;
@@ -36,8 +36,9 @@ public class Loan {
   }
 
   public static Loan newAdvisedLine(double commitment, Date start, Date expiry, int riskRating) {
-    if (riskRating > 3)
+    if (riskRating > 3) {
       return null;
+    }
     Loan advisedLine =
         new Loan(commitment, 0, start, expiry, null, riskRating, new CapitalStrategyAdvisedLine());
     advisedLine.setUnusedPercentage(0.1);
